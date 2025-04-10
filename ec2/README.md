@@ -9,29 +9,24 @@ Este repositório contém scripts e ferramentas para automatizar tarefas relacio
 ## Instruções de Uso
 
 1. Clone o repositório:
-   ```
-   git clone <URL_DO_REPOSITORIO>
+   ```bash
+   git clone https://github.com/ZeroCoolCH/ec2-scripts.git
    ```
 
 2. Navegue até o diretório do projeto:
-   ```
+   ```bash
    cd ec2
    ```
 
 3. Execute o script de exemplo:
-   ```
+   ```bash
    bash scripts/example_script.sh
    ```
 
-## Requisitos
+## Contribuição
 
-- Acesso à AWS com permissões para gerenciar instâncias EC2.
-- Bash ou um terminal compatível para executar os scripts.
-
-## Contribuições
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir um pull request ou relatar problemas.
+Sinta-se à vontade para abrir issues ou enviar pull requests para melhorar este projeto.
 
 ## Licença
 
-Este projeto está licenciado sob a MIT License.
+Este projeto está licenciado sob a [MIT License](LICENSE).
