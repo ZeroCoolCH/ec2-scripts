@@ -4,16 +4,17 @@
 # Descrição: Configura um serviço systemd para rodar o zerohash_finder continuamente em uma instância EC2 (Ubuntu).
 # Autor: [Seu Nome]
 # Data: 10 de Abril de 2025
-# Licença: MIT (ou a que preferir)
+# Licença: MIT
 
 # --- Configurações Personalizáveis ---
-PROGRAM_PATH="/zerohash/target/release/zerohash_finder"  # Caminho do binário
+PROGRAM_PATH="/home/ubuntu/zerohash/target/release/zerohash_finder"  # Caminho corrigido do binário
 PROGRAM_ARGS="--address 19vkiEajfhuZ8bs8Zu2jgmC6oqZbWqhxhG --range-start 1000000000000 --range-end 1ffffffffffff --random"  # Argumentos do programa
-WORKING_DIR="/zerohash/target/release"  # Diretório de trabalho
+WORKING_DIR="/home/ubuntu/zerohash/target/release"  # Diretório de trabalho corrigido
 SERVICE_NAME="zerohash"  # Nome do serviço
-USER="ubuntu"  # Usuário padrão do Ubuntu na EC2, ajuste se necessário
+USER="ubuntu"  # Usuário padrão do Ubuntu na EC2
 LOG_OUTPUT="/var/log/zerohash.log"  # Arquivo de log de saída
 LOG_ERROR="/var/log/zerohash_err.log"  # Arquivo de log de erro
+RUN_SCRIPT="/home/ubuntu/zerohash/run_zerohash.sh"  # Caminho corrigido do script de execução
 
 # --- Verificações Iniciais ---
 if [ ! -f "$PROGRAM_PATH" ]; then
@@ -27,13 +28,14 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # --- Passo 1: Criar o Script de Execução ---
-echo "Criando script de execução em /zerohash/run_zerohash.sh..."
-cat <<EOT > /zerohash/run_zerohash.sh
+echo "Criando script de execução em $RUN_SCRIPT..."
+mkdir -p "$(dirname "$RUN_SCRIPT")"  # Cria o diretório se não existir
+cat <<EOT > "$RUN_SCRIPT"
 #!/bin/bash
 $PROGRAM_PATH $PROGRAM_ARGS
 EOT
 
-chmod +x /zerohash/run_zerohash.sh
+chmod +x "$RUN_SCRIPT"
 echo "Script de execução criado com sucesso."
 
 # --- Passo 2: Criar o Arquivo de Serviço systemd ---
@@ -44,7 +46,7 @@ Description=ZeroHash Finder Service
 After=network.target
 
 [Service]
-ExecStart=/zerohash/run_zerohash.sh
+ExecStart=$RUN_SCRIPT
 WorkingDirectory=$WORKING_DIR
 Restart=always
 User=$USER
