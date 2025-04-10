@@ -28,6 +28,23 @@ Este repositório contém scripts e ferramentas para automatizar tarefas relacio
    ./scripts/example_script.sh
    ```
 
+## Instruções para Desinstalar e Excluir
+
+1. Navegue até o diretório do projeto:
+   ```bash
+   cd ec2-scripts
+   ```
+
+2. Exclua os arquivos e diretórios do projeto:
+   ```bash
+   rm -rf ec2-scripts
+   ```
+
+3. Opcionalmente, remova o repositório clonado do Git:
+   ```bash
+   git remote remove origin
+   ```
+
 ## Contribuição
 
 Sinta-se à vontade para abrir issues ou enviar pull requests para melhorar este projeto.
