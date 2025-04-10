@@ -15,12 +15,17 @@ Este repositório contém scripts e ferramentas para automatizar tarefas relacio
 
 2. Navegue até o diretório do projeto:
    ```bash
-   cd ec2
+   cd ec2-scripts/ec2
    ```
 
-3. Execute o script de exemplo:
+3. Torne o script executável:
    ```bash
-   bash scripts/example_script.sh
+   chmod +x scripts/example_script.sh
+   ```
+
+4. Execute o script de exemplo:
+   ```bash
+   ./scripts/example_script.sh
    ```
 
 ## Contribuição
